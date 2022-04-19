@@ -12,7 +12,7 @@ We propose a new ensemble method named "PermAVG" to overcome the computational c
 
 In order to run the demo.ipynb you must first create the conda environment. You can do this simply by running:
 
-    conda env create -f environment.yml
+    conda env create -f freeze.yml
 
 Then add the project to the python path using:
 
