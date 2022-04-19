@@ -1,0 +1,10 @@
+name: perm_avg
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9.7
+  - pip=21.2.4
+  - pip
+    - torch==1.21.1
+    - jupyter
