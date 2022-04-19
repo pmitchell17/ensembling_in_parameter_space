@@ -14,6 +14,13 @@ In order to run the demo.ipynb you must first create the conda environment. You 
 
     conda env create -f environment.yml
 
+Then add the project to the python path using:
+
+    conda develop <PATH TO ensembling_in_parameter_space>
+
+If you cannot run the "conda develop" command, then you may need
+to install the conda build tools.
+
 In order to have the conda environment active in jupyter notebook:
 
 1) Activate the conda environment

@@ -6,5 +6,5 @@ dependencies:
   - python=3.9.7
   - pip=21.2.4
   - pip:
-    - torch==1.21.1
+    - torch==1.10.1
     - jupyter
