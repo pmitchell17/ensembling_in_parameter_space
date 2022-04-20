@@ -23,7 +23,7 @@ class TestSinkhorn(unittest.TestCase):
                 [1, 1, 1]
             ]
         )
-        row_normalized = self.sinkhorn.row_normalization(matrix)
+        row_normalized = self.sinkhorn._row_normalization(matrix)
         normalized_sum = round(torch.sum(row_normalized).item())
         
         self.assertEqual(normalized_sum, 3)
@@ -36,7 +36,7 @@ class TestSinkhorn(unittest.TestCase):
                 [5, 1, 1]
             ]
         )
-        col_normalized = self.sinkhorn.column_normalization(matrix)
+        col_normalized = self.sinkhorn._column_normalization(matrix)
         normalized_sum = round(torch.sum(col_normalized).item())
         
         self.assertEqual(normalized_sum, 3)

@@ -8,20 +8,28 @@ One established way of overcoming these computational constraints is known as Kn
 
 We propose a new ensemble method named "PermAVG" to overcome the computational constraints of DeepEnsembles. Rather than averaging in function space, the PermAVG method averages the M models in parameter space, such that an ensemble of M models can be reduced to a single model. In this way we are able to overcome the computational constraints of DeepEnsembles, while hopefully maintaining accuracy gains. The "PermAVG" method seeks to learn the optimal permutations such that the average over the weights of M models is optimal.
 
-## Running the Demo
+## Creating the Conda Environment
 
 In order to run the demo.ipynb you must first create the conda environment. You can do this simply by running:
 
     conda env create -f freeze.yml
 
-Then add the project to the python path using:
+Then we need to add the project to the PYTHONPATH. You can do this by running conda develop on the repository as follows.:
 
-    conda develop <PATH TO ensembling_in_parameter_space>
+    cd ..
+    conda develop ensembling_in_parameter_space
 
-If you cannot run the "conda develop" command, then you may need
-to install the conda build tools.
+In case you experience the following error:
 
-In order to have the conda environment active in jupyter notebook:
+    CommandNotFoundError: To use 'conda develop', install conda-build.
+
+You need to install the conda-build tools. You can do this by running:
+
+    conda install conda-build
+
+## Running the demo
+
+In order to run the demo, we must run the conda environment with the conda environement activate. Hence, do the following:
 
 1) Activate the conda environment
 

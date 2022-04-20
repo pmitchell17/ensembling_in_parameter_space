@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 
 from models.mlp import MLP
-from models.permAVG import PermAVG
+from models.perm_avg import PermAVG
 
 
 class TestPermAVGForward(unittest.TestCase):

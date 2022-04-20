@@ -34,18 +34,18 @@ class TestMLP(unittest.TestCase):
     
     def test_forward_relu_with_negative_input(self):
         """Tests that relu is called"""
-        img = torch.ones(size=(1, 3, 2)) * -1
+        img = torch.ones(size=(1, 1, 3, 2)) * -1
         output = self.mlp(img)
-        self.assertEqual(output.tolist(), [0, 0])
+        self.assertEqual(output[0].tolist(), [0, 0])
 
     def test_forward_relu_last_layer(self):
         """Tests that the last layer does not apply relu"""
-        img = torch.ones(size=(1, 3, 2))
+        img = torch.ones(size=(1, 1, 3, 2))
         mlp = self.mlp
         with torch.no_grad():
             mlp.linears[2].weight *= -1
         output = mlp(img)
-        self.assertEqual(output.tolist(), [-216, -216])
+        self.assertEqual(output[0].tolist(), [-216, -216])
 
     
 if __name__ == "__main__":
