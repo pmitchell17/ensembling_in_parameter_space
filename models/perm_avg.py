@@ -222,30 +222,5 @@ class PermAVG(nn.Module):
                     }
         return weights_dict
 
-    def export(self):
-        in_out_units = [
-            (linear.in_features, linear.out_features) for linear in self.models[0].linears
-        ]
-
-        export_model = MLP(in_out_units)
-        for layer_index in range(self.num_layers):
-            avg_layer_weights = 0
-            avg_layer_bias = 0
-            for model_index, _ in enumerate(self.models):
-                permuted_weights, permuted_bias = \
-                    self._get_permuted_layer_weights(model_index, layer_index)
-                avg_layer_weights += permuted_weights / self.num_models
-                avg_layer_bias += permuted_bias / self.num_models
-            with torch.no_grad():
-                export_model.linears[layer_index].weight = nn.Parameter(
-                    avg_layer_weights,
-                    requires_grad=False
-                )
-                export_model.linears[layer_index].bias = nn.Parameter(
-                    avg_layer_bias,
-                    requires_grad=False
-                )
-        return export_model
-
         
 

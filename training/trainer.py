@@ -70,5 +70,7 @@ class Trainer:
                 self.optimizer.step()
                 self.lr_scheduler.step()
             
-            print(f'Epoch {epoch}, loss={loss:2f}')
+            print(f'Epoch {epoch}, loss={loss}')
+            
+
             

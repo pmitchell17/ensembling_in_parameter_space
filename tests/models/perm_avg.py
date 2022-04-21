@@ -340,24 +340,7 @@ class TestWeightPermutations(unittest.TestCase):
 
             self.assertEqual(weights_1_0[0].tolist(), [3, 3, 3])
             self.assertEqual(bias_1_0[0].tolist(), [3, 2, 1])
-
-    def test_export(self):
-        """Test that exported model is equivalent to forward"""
-        self.perm_avg.naive = False
-        input = torch.tensor(
-            [
-                [1, 2, 3],
-                [4, 5, 6]
-            ],
-            dtype=torch.float32
-        )
-        output_forward = self.perm_avg(input)
-
-        exported_model = self.perm_avg.export()
-        output_export = exported_model(input)
-
-        self.assertEqual(torch.sum(output_forward).item(), torch.sum(output_export).item())
-
+            
 
 if __name__ == "__main__":
     unittest.main()
