@@ -198,29 +198,3 @@ class PermAVG(nn.Module):
             layer_output = self._calc_layer_output(input, layer_index)
             input = layer_output
         return layer_output
-
-    def _get_permuted_layer_weights(self, model_index, layer_index):
-        layer = self.models[model_index].linears[layer_index]
-        perm_matrix = self.get_perm_matrix(model_index, layer_index)
-        permuted_weights = perm_matrix @ layer.weight
-        permuted_bias = perm_matrix @ layer.bias
-        return permuted_weights, permuted_bias
-
-    def get_weights(self, permuted=True):
-        weights_dict = dict()
-        for model_index, model in enumerate(self.models):
-            for layer_index, layer in enumerate(model.linears):
-                if permuted:
-                    weights, bias = \
-                    self._get_permuted_layer_weights(model_index, layer_index)
-                else:
-                    weights, bias = layer.weight, layer.bias
-                weights_dict[model_index, layer_index] = \
-                    {
-                        "weights": weights,
-                        "bias": bias
-                    }
-        return weights_dict
-
-        
-
